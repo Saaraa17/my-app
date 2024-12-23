@@ -1,0 +1,291 @@
+/* التصميم العام للفوتر */
+.footer {
+    background-color: #f1f1f1;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    bottom: 0; /* تأكيد أن الفوتر في أسفل الصفحة */
+    left: 0;
+    width: 100%; /* ضمان أن الفوتر يمتد على عرض الصفحة بالكامل */
+    z-index: 9999; /* التأكد أن الفوتر يظهر فوق باقي المحتوى */
+    position: relative; /* تحديد الموضع */
+    margin-top: 50px;
+  }
+  
+ /*الجزء الأيسر */
+  .footer-left {
+    flex: 1;
+    align-items: flex-start;
+  }
+  
+/* لتكبير حجم اللوجو */
+ .footer-logo img {
+    max-width: 200px;  /* الحجم الجديد للوجو */
+    height: auto;      /* الحفاظ على النسب */
+  }
+  
+  /* تخصيص النصوص */
+  .footer-description {
+    font-size: 14px;
+    color: #505050;
+    margin-bottom: 10px; 
+  }
+  
+  .footer-download {
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+  
+  .download-buttons h2{
+    color: black;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 15px;
+
+  }
+  
+/* روابط المتاجر */
+.download-buttons {
+  display: flex;
+  gap: 15px;
+  margin-top: auto;
+}
+
+.download-icon {
+  width: 100px; /* حجم الأيقونات */
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.3s ease; /* تأثير عند التمرير */
+  margin-top: 10px;
+}
+
+.download-icon:hover {
+  transform: scale(1.1); /* تكبير الأيقونات عند التمرير */
+}
+  
+  /* النص Follow Us */
+  .footer-follow-us {
+    margin-top: 20px;
+  }
+  
+  .follow-us-text {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .social-icons {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+  }
+  
+  .social-icon {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+    cursor: pointer;
+  }
+
+
+  /* الجزء الأوسط */
+.footer-center {
+    flex: 1;
+    text-align: center;
+
+  }
+  
+  /* عنوان الفئات */
+  .categories-title {
+    color: #505050;
+    margin: 0;
+  }
+  
+  /* قائمة الفئات */
+  .categories-list {
+    list-style-type: none;  
+    margin-top: 10px;
+     display: block;
+  }
+ 
+  .categories-list li {
+    font-size: 14px;
+    color: #505050;
+    margin-bottom: 8px;  
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .categories-list li:hover {
+    transform: scale(1.05);
+  }
+  
+
+
+  /* الجزء الأيمن */
+.footer-right {
+    flex: 1; /* المساحة التي يشغلها */
+    flex-direction: column; /* ترتيب النصوص عموديًا */
+  }
+  
+  .footer-help-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+  
+  .footer-help-text {
+    font-size: 18px;
+    font-weight: bold;
+    color: #505050;
+  }
+  
+  .footer-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* مسافة بين البريد والهاتف */
+  }
+  
+  .contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px; /* مسافة بين الأيقونة والنص */
+  }
+  
+  .icon {
+    width: 25px;
+    height: 25px;
+    object-fit: contain;
+    margin-top: 5px; /* لضبط الأيقونة مع النص */
+  }
+  
+  .contact-title {
+    font-weight: bold;
+    margin: 0;
+    font-size: 14px;
+    color: #000;
+  }
+  
+  .contact-detail {
+    margin: 2px;
+    font-size: 14px;
+    color: #505050;
+  }
+
+.home-section {
+  padding-bottom: 100px; /* هذا سيساعد في إبعاد الفوتر عن محتوى الصفحة */
+}
+  
+  
+/* تصميم متجاوب للشاشات الصغيرة */
+@media (max-width: 768px) {
+  .footer {
+    flex-direction: column; /* ترتيب الفوتر عموديًا */
+    align-items: flex-start; /* محاذاة المحتويات لليسار */
+    padding: 20px 10px; /* تقليص الحواف */
+  }
+
+  .footer-left, .footer-center, .footer-right {
+    width: 100%; /* جعل كل جزء يشغل 100% من العرض */
+    text-align: left; /* محاذاة النصوص لليسار */
+    margin-bottom: 20px; /* إضافة مسافة بين الأقسام */
+  }
+
+  /* إخفاء "Our Categories" */
+  .footer-center {
+    display: none; /* إخفاء "Our Categories" */
+  }
+
+  /* تعديل زر الداونلود ليكون على الشمال */
+  .download-buttons {
+    display: flex;
+    gap: 10px; /* المسافة بين الأيقونات */
+    margin-top: 10px; /* إضافة مسافة من أعلى */
+    align-items: center; /* محاذاة الأيقونات والنص */
+    justify-content: flex-start; /* محاذاة الداونلود إلى الشمال */
+  }
+
+  .download-buttons h2 {
+    font-size: 14px; /* تقليص حجم النص */
+    margin-right: 10px; /* مسافة بين النص والأيقونات */
+    text-align: left;
+  }
+
+  .download-icon {
+    width: 80px; /* تقليص حجم الأيقونات */
+    height: auto;
+  }
+
+  /* تعديل قسم "Follow Us" */
+  .footer-follow-us {
+    display: flex;
+    align-items: center; /* محاذاة الأيقونات والنص */
+    gap: 10px; /* مسافة بين الأيقونة والنص */
+    margin-top: 10px; /* إضافة مسافة من أعلى */
+  }
+
+  .follow-us-text {
+    font-size: 14px; /* تقليص حجم النص */
+    font-weight: bold;
+  }
+
+  .social-icons {
+    display: flex;
+    gap: 10px; /* مسافة بين الأيقونات */
+  }
+
+  .social-icon {
+    width: 25px; /* تقليص حجم الأيقونات */
+    height: 25px;
+  }
+
+  /* تعديل قسم "We are here always to help you" */
+  .footer-help-section {
+    display: flex;
+    flex-direction: column; /* ترتيب العناصر عموديًا */
+    align-items: flex-start; /* محاذاة العناصر لليسار */
+    width: 100%;
+    margin-top: 20px; /* مسافة إضافية في الأعلى */
+  }
+
+  .footer-help-text {
+    font-size: 14px; /* تقليص حجم النص */
+    font-weight: bold;
+    text-align: left; /* محاذاة النص إلى الشمال */
+  }
+
+  .categories-list li {
+    font-size: 12px; /* تقليص حجم النص */
+    margin-bottom: 6px;
+  }
+
+  .footer-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* تقليص المسافة بين الأيقونة والنص */
+  }
+
+  .icon {
+    width: 20px; /* تقليص حجم الأيقونة */
+    height: 20px;
+  }
+
+  .contact-title {
+    font-size: 12px; /* تقليص حجم النص */
+  }
+
+  .contact-detail {
+    font-size: 12px; /* تقليص حجم النص */
+  }
+}
+
+  

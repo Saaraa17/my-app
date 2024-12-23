@@ -1,0 +1,70 @@
+
+  
+
+/* قسم Our Categories */
+.categories-section {
+    text-align: center;
+   /* تعديل المسافة حول القسم */
+  }
+  
+  /* العنوان */
+  .categories-section h2 {
+    font-size: 30px; 
+    font-weight: bold;
+    margin-bottom: 40px; 
+    color: #1E1E1E; 
+  }
+  .categories-title{
+  
+    text-align: center;  /* لتوسيط النص داخل العنصر */
+  
+    margin: 0;           
+  
+  }
+  
+  
+  /* شبكة العناصر */
+  .categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* توزيع ديناميكي للعناصر */
+    gap: 30px; /* مسافة بين العناصر */
+    max-width: 1200px; /* تحديد الحد الأقصى لعرض الشبكة */
+    margin:auto; /* محاذاة الشبكة في المنتصف */
+  }
+  
+  /* العناصر الفردية */
+  .category-item {
+    text-decoration: none;
+    color: #1E1E1E;
+    text-align: center;
+    transition: transform 0.3s ease; /* تأثير عند التحويم */
+  }
+  
+  .category-item:hover {
+    transform: scale(1.1); /* تكبير العنصر قليلاً عند التحويم */
+  }
+  
+  /* أيقونات العناصر */
+  .category-icon {
+    width: 100px; /* ضبط حجم الصور الطبيعي */
+    height: auto;
+    margin-bottom: 15px; /* مسافة بين الصورة والنص */
+    border-radius: 10px; /* حواف مدورة */
+  }
+  
+  /* أسماء العناصر */
+  .category-name {
+    font-size: 1rem;
+    font-weight: bold;
+  }
+    /* تنسيق الاستجابة للأجهزة الصغيرة */
+    @media (max-width: 768px) {
+      .categories-icons {
+        grid-template-columns: repeat(2, 1fr); /* عرض الأيقونات في صفين عند الأجهزة الصغيرة */
+      }
+    
+      .category-icon {
+        width: 50px;
+        height: 50px;
+      }
+    }

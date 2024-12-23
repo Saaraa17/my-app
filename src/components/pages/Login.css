@@ -1,0 +1,158 @@
+/* src/components/pages/Login.css */
+
+.login-container {
+  display: flex;
+  justify-content: center; /* توسيط المحتوى أفقيًا */
+  align-items: center; /* توسيط المحتوى عموديًا */
+  min-height: 60vh; /* تغطية كامل مساحة الشاشة */
+  background-color: #f7f7f7;
+}
+  
+  .login-box {
+    background: white;
+    padding: 30px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    text-align: center;
+
+  }
+  
+  .logo {  
+  display: block;
+  margin: 0 auto; /* توسيط الشعار في المنتصف */
+  width: 100px;
+  }
+  
+  h2 {
+    font-size: 20px;
+    color: #d32f2f;
+    margin-bottom: 10px;
+    font-weight: bold; /* جعل النص Bold */
+  }
+  
+  .login-text {
+    font-size: 14px;
+    color: #7a7a7a;
+    margin-bottom: 20px;
+  }
+  
+  .input-group {
+    margin-bottom: 15px;
+    text-align: left;
+  }
+  .input-group input:focus {
+    border-color: #3771C8;
+    outline: none;
+  }
+  
+  label {
+    display: block;
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 5px;
+  }
+  
+  input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+
+  .login2-btn {
+    background-color: #ee2957;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  
+  .forgot-password {
+    margin-top: 10px;
+    text-align: left; /* النص يكون على اليمين */
+  }
+  
+  a {
+    color: #505050;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  .signup{ 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+ 
+
+/* Media Queries لتنسيق الصفحة على الشاشات الصغيرة */
+@media (max-width: 768px) {
+    .login-box {
+        padding: 20px;
+        width: 80%;
+    }
+
+    h2 {
+        font-size: 18px;
+    }
+
+    .login-text {
+        font-size: 14px;
+        margin-bottom: 15px;
+    }
+
+    .input-group {
+        margin-bottom: 12px;
+    }
+
+    input {
+        font-size: 12px;
+    }
+
+    .login2-btn {
+        font-size: 14px;
+        padding: 12px 18px;
+    }
+
+    .forgot-password {
+        font-size: 12px;
+    }
+}
+
+/* Media Queries لأجهزة الجوال (الشاشات الصغيرة جدًا) */
+@media (max-width: 480px) {
+    .login-box {
+        width: 90%;
+    }
+
+    h2 {
+        font-size: 16px;
+    }
+
+    .login-text {
+        font-size: 12px;
+    }
+
+    input {
+        font-size: 12px;
+        padding: 8px;
+    }
+
+    .login2-btn {
+        font-size: 14px;
+        padding: 12px 16px;
+    }
+
+    .forgot-password {
+        font-size: 12px;
+        text-align: center; /* يفضل أن تكون على اليسار */
+    }
+}

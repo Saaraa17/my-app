@@ -1,0 +1,139 @@
+/* قسم Furniture */
+.Furniture-section {
+  padding: 40px 20px;
+  background-color: #f9f9f9;
+  margin-top: 40px;
+}
+
+.Furniture-section h2 {
+  color: #1E1E1E;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.section-header {
+  position: relative;
+  margin-bottom: 100px;
+}
+
+.section-header .see-more {
+  position: absolute;
+  right: 0;
+  color: #7A7A7A;
+  font-size: 15px;
+  text-decoration: none;
+}
+
+/* الشبكة لعرض المنتجات */
+.Furniture-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+/* تصميم البطاقة */
+.Furniture-card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.Furniture-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.Furniture-image {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+.Furniture-details {
+  padding: 15px;
+  text-align: left;
+}
+
+.Furniture-details h3 {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.Furniture-details .price {
+  font-size: 16px;
+  font-weight: bold;
+  color: #1E1E1E;
+}
+
+/* شاشات صغيرة أقل من 768px */
+@media (max-width: 768px) {
+  .Furniture-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+  }
+
+  .Furniture-card {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transform: scale(0.95);
+    margin-top: 10px;
+  }
+
+  .Furniture-image {
+    height: 180px;
+  }
+
+  .Furniture-details {
+    padding: 10px;
+  }
+
+  .Furniture-details h3 {
+    font-size: 1rem;
+  }
+
+  .Furniture-details .price {
+    font-size: 0.85rem;
+  }
+}
+
+/* شاشات صغيرة جدًا أقل من 480px */
+@media (max-width: 480px) {
+  .Furniture-grid {
+    margin-top: 25px;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .section-header {
+    margin-bottom: 10px;
+  }
+
+  .Furniture-card {
+    margin: 0 auto;
+    width: 90%;
+    transform: scale(0.9);
+    margin: 10px;
+  }
+
+  .Furniture-image {
+    height: 150px;
+  }
+
+  .Furniture-details {
+    padding: 8px;
+  }
+
+  .Furniture-details h3 {
+    font-size: 0.9rem;
+  }
+
+  .Furniture-details .price {
+    font-size: 0.75rem;
+  }
+}

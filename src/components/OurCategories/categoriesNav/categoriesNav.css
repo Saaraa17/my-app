@@ -1,0 +1,218 @@
+.categories-navbar {
+  background-color: #f8f9fa;
+  padding: 8px 15px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.categories-list2 {
+  list-style: none;
+  display: flex; /* ترتيب العناصر جنب بعض */
+  justify-content: center;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+}
+
+.category-link {
+  margin: 0;
+  padding: 5px 10px;
+}
+
+.category-link a {
+  text-decoration: none;
+  color: #1E1E1E; /* اللون الافتراضي */
+  font-size: 15px;
+  font-weight: 500;
+  transition: color 0.2s ease-in-out;
+}
+
+.category-link a:hover {
+  color: #EE2957; /* اللون عند التمرير */
+}
+
+.category-link .active {
+  color: white; /* لون النص في الرابط النشط */
+  background-color: #EE2957; /* لون خلفية للرابط النشط */
+  border-radius: 5px; /* زوايا دائرية */
+  padding: 5px 10px; /* حشوة إضافية */
+  pointer-events: none; /* تعطيل التفاعل مع الزر النشط */
+}
+
+/* إخفاء الزر في الشاشات الكبيرة */
+.category-select-button {
+  display: none;
+}
+
+/* Media Query - إظهار الزر في الشاشات الصغيرة (768px) */
+@media (max-width: 820px) {
+  .category-select-button {
+    display: block; /* إظهار الزر */
+    background-color: #f8f9fa;
+    border: 1px solid #ccc; /* إضافة حدود للزر */
+    padding: 6px 10px; /* تقليص حجم الزر بشكل أكبر */
+    font-size: 20px; /* تصغير حجم النص */
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 10px; /* إزالة الهوامش */
+    width: auto; /* عدم تحديد عرض ثابت للزر */
+    position: absolute; /* جعل الزر في موضع ثابت */
+    right: 10px; /* تحريكه إلى اليمين بشكل أقرب */
+    top: 50%; /* محاذاة الزر بشكل عمودي */
+    transform: translateY(-50%); /* تعديل الوضع الرأسي للزر */
+  }
+
+  .category-select-button:hover {
+    background-color: #ee2957;
+    color: white;
+  }
+
+  .categories-list2 {
+    display: block; /* جعل القائمة تظهر تحت بعضها */
+    position: absolute;
+    top: 100%; /* جعل القائمة تظهر أسفل الزر */
+    right: 0; /* محاذاة القائمة مع الزر من اليمين */
+    width: 100%; /* ملء عرض الحاوية */
+    background-color: #f8f9fa;
+    border: 1px solid #ccc; /* إضافة حدود حول القائمة */
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 8px 0;
+    margin-top: 5px;
+  }
+
+  .category-link {
+    padding: 6px 10px; /* تقليص الحشوة بين العناصر */
+  }
+
+  .category-link a {
+    font-size: 18px;
+    padding: 4px 8px;
+  }
+  .show-more-button {
+    margin-top: 10px;
+    padding: 8px 12px;
+    font-size: 20px;
+    background-color: #ee2957;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+}
+
+
+/* Media Query - إظهار الزر في الشاشات الصغيرة (768px) */
+@media (max-width: 768px) {
+  .category-select-button {
+    display: block; /* إظهار الزر */
+    background-color: #f8f9fa;
+    border: 1px solid #ccc; /* إضافة حدود للزر */
+    padding: 6px 10px; /* تقليص حجم الزر بشكل أكبر */
+    font-size: 12px; /* تصغير حجم النص */
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 10px; /* إزالة الهوامش */
+    width: auto; /* عدم تحديد عرض ثابت للزر */
+    position: absolute; /* جعل الزر في موضع ثابت */
+    right: 10px; /* تحريكه إلى اليمين بشكل أقرب */
+    top: 50%; /* محاذاة الزر بشكل عمودي */
+    transform: translateY(-50%); /* تعديل الوضع الرأسي للزر */
+  }
+
+  .category-select-button:hover {
+    background-color: #ee2957;
+    color: white;
+  }
+
+  .categories-list2 {
+    display: block; /* جعل القائمة تظهر تحت بعضها */
+    position: absolute;
+    top: 100%; /* جعل القائمة تظهر أسفل الزر */
+    right: 0; /* محاذاة القائمة مع الزر من اليمين */
+    width: 100%; /* ملء عرض الحاوية */
+    background-color: #f8f9fa;
+    border: 1px solid #ccc; /* إضافة حدود حول القائمة */
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 8px 0;
+    margin-top: 5px;
+  }
+
+  .category-link {
+    padding: 6px 10px; /* تقليص الحشوة بين العناصر */
+  }
+
+  .category-link a {
+    font-size: 12px;
+    padding: 4px 8px;
+  }
+  .show-more-button {
+    margin-top: 10px;
+    padding: 8px 12px;
+    font-size: 14px;
+    background-color: #ee2957;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+}
+
+/* Media Query - تحسين المظهر في الشاشات الصغيرة جداً (480px) */
+@media (max-width: 480px) {
+  .category-select-button {
+    display: block; /* إظهار الزر */
+    background-color: #f8f9fa;
+    border: 1px solid #ccc; /* إضافة حدود للزر */
+    padding: 6px 10px; /* تقليص حجم الزر بشكل أكبر */
+    font-size: 12px; /* تصغير حجم النص */
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 0; /* إزالة الهوامش */
+    width: auto; /* عدم تحديد عرض ثابت للزر */
+    position: absolute; /* جعل الزر في موضع ثابت */
+    right: 10px; /* تحريكه إلى اليمين بشكل أقرب */
+    top: 50%; /* محاذاة الزر بشكل عمودي */
+    transform: translateY(-50%); /* تعديل الوضع الرأسي للزر */
+  }
+
+  .category-select-button:hover {
+    background-color: #ee2957;
+    color: white;
+  }
+
+  .categories-list2 {
+    display: block; /* جعل القائمة تظهر تحت بعضها */
+    position: absolute;
+    top: 100%; /* جعل القائمة تظهر أسفل الزر */
+    right: 0; /* محاذاة القائمة مع الزر من اليمين */
+    width: 100%; /* ملء عرض الحاوية */
+    background-color: #f8f9fa;
+    border: 1px solid #ccc; /* إضافة حدود حول القائمة */
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 8px 0;
+    margin-top: 5px;
+  }
+
+  .category-link {
+    padding: 6px 10px; /* تقليص الحشوة بين العناصر */
+  }
+
+  .category-link a {
+    font-size: 12px;
+    padding: 4px 8px;
+  }
+  .show-more-button {
+    margin-top: 10px;
+    padding: 8px 12px;
+    font-size: 14px;
+    background-color: #ee2957;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+}

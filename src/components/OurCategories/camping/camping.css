@@ -1,0 +1,127 @@
+.Camping {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .Camping-title {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    color: #333;
+  }
+  
+  .Camping-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+  }
+  
+  .Camping-card {
+    width: 350px; 
+    height: 300px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  .Camping-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .Camping-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .Camping-content {
+    padding: 10px; 
+    text-align: left; 
+  }
+  
+  .Camping-name {
+    font-size: 1.4rem; 
+    margin: 0 0 5px; 
+    color: #333;
+  }
+  
+  .Camping-price {
+    font-size: 1rem;
+    margin: 5px 0; 
+    color: #555;
+  }
+  
+  .Camping-description {
+    font-size: 0.9rem;
+    margin: 5px 0;
+    color: #666;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    white-space: nowrap;
+  }
+
+  /* Media Query للشاشات المتوسطة (التابلت) */
+@media (max-width: 768px) {
+  .Camping-container {
+    flex-direction: column; 
+    gap: 20px; 
+  }
+
+  .Camping-card {
+    width: 100%; 
+    height: auto;
+  }
+
+  .Camping-image {
+    height: 150px; 
+  }
+
+  .Camping-content {
+    text-align: center; 
+    padding: 15px; 
+  }
+
+  .Camping-name {
+    font-size: 1.2rem; 
+  }
+
+  .Camping-price, .Camping-description {
+    font-size: 0.9rem; 
+  }
+}
+
+/* Media Query للشاشات الصغيرة جدًا (الموبايل) */
+@media (max-width: 480px) {
+  .Camping-title {
+    font-size: 1.5rem; 
+  }
+
+  .Camping-card {
+    box-shadow: none; 
+  }
+
+  .Camping-image {
+    height: 120px; 
+  }
+
+  .Camping-content {
+    padding: 10px; 
+  }
+
+  .Camping-name {
+    font-size: 1rem; 
+  }
+
+  .Camping-price, .Camping-description {
+    font-size: 0.8rem; 
+  }
+}
+
+  

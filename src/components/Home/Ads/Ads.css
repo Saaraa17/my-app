@@ -1,0 +1,155 @@
+/* قسم Post Your Ads */
+.ads-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px 20px;
+    gap: 20px; /* مسافة بين المحتوى والصورة */
+    max-width: 1200px;
+    margin: 0 auto; /* توسيط القسم في الصفحة */
+    position: relative; /* للسماح باستخدام الإزاحة */
+    left: 200px; /* تحريك القسم نحو اليمين */
+  }
+  
+  /* محتوى النصوص */
+  .ads-content {
+    flex: 1; /* السماح للمحتوى بأخذ مساحة مرنة */
+    text-align: left;
+  }
+  
+  .ads-content h2 {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 0px;
+    color: #1e1e1e;
+  }
+  
+  .ads-content p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #4a4a4a;
+    margin-bottom: 20px;
+  }
+  
+  .ads-button {
+    background-color: #EE2957;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease; /* تأثير عند التفاعل مع الزر */
+  }
+  
+  .ads-button:hover {
+    background-color: #ee2957be;
+  }
+  
+  /* صورة الإعلان */
+  .ads-image {
+    text-align: center;
+  }
+  
+  .ads-image img {
+    width: 100%;
+    height: auto;
+    max-width: 600px;
+    border-radius: 10px;
+  }
+  
+ /* Media Query للأجهزة الصغيرة */
+@media (max-width: 768px) {
+  .ads-section {
+    flex-direction: row; /* ترتيب العناصر بجانب بعضها */
+    flex-wrap: wrap; /* السماح بلف العناصر عند الحاجة */
+    align-items: center; /* محاذاة العناصر وسطياً */
+    justify-content: center; /* توسيط العناصر أفقياً */
+    gap: 10px; /* مسافة صغيرة بين العناصر */
+    left: 0; /* إزالة الإزاحة الجانبية */
+    padding: 10px; /* تقليل الحواف */
+  }
+
+  .ads-content {
+    flex: 0 0 45%; /* السماح للنصوص بأخذ 45% من العرض */
+    text-align: left; /* النصوص على اليسار */
+    margin: 0; /* إزالة الهوامش الإضافية */
+  }
+
+  .ads-content h2 {
+    font-size: 18px; /* تصغير حجم العنوان */
+    margin-bottom: 5px;
+  }
+
+  .ads-content p {
+    font-size: 14px; /* تصغير حجم النص */
+    line-height: 1.4;
+    margin-bottom: 10px;
+  }
+
+  .ads-button {
+    font-size: 12px; /* تصغير حجم النص داخل الزر */
+    padding: 6px 12px; /* تقليل حجم الزر */
+  }
+
+  .ads-image {
+    flex: 0 0 10%; /* السماح للصورة بأخذ 45% من العرض */
+    text-align: center;
+  }
+
+  .ads-image img {
+    max-width: 100%; /* تصغير حجم الصورة لتناسب المساحة */
+    height: auto;
+    border-radius: 5px;
+  }
+}
+
+/* Media Query للأجهزة الأصغر من 480px */
+@media (max-width: 480px) {
+  .ads-section {
+    flex-direction: row; /* ترتيب العناصر أفقي */
+    align-items: center; /* محاذاة العناصر عموديًا */
+    justify-content: center; /* توسيط العناصر */
+    gap: 10px; /* مسافة صغيرة بين العناصر */
+    padding: 10px; /* تقليل الهوامش الداخلية */
+    margin-left: 15px; 
+    margin-right: 15px ;
+  }
+
+  .ads-content {
+    flex: 1; /* السماح للمحتوى النصي بالتمدد */
+    text-align: left; /* محاذاة النصوص لليسار */
+    font-size: 10px; /* تصغير حجم النص */
+  }
+
+  .ads-content h2 {
+    font-size: 11px; /* حجم أصغر للعنوان */
+    margin-bottom: 5px;
+  }
+
+  .ads-content p {
+    font-size: 12px; /* تصغير حجم النص */
+    line-height: 1.4; /* مسافة بين الأسطر */
+    margin-bottom: 8px;
+  }
+
+  .ads-button {
+    font-size: 10px; /* حجم صغير للزر */
+    padding: 6px 10px; /* تصغير حجم الزر */
+  }
+
+  .ads-image {
+    flex: 0 0 15%; /* الصورة تأخذ 30% من العرض */
+    text-align: center;
+  }
+
+  .ads-image img {
+    max-width: 100px; /* تقليل عرض الصورة */
+    height: auto;
+    border-radius: 5px;
+  }
+}
+
+
+  

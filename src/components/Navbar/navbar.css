@@ -1,0 +1,212 @@
+/* Navbar container */
+.navbar {
+    display: flex;
+    justify-content: space-between; /* التوزيع بين الشمال واليمين */
+    align-items: center;
+    background-color: #ee2957; /* اللون الرئيسي للخلفية */
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    flex-wrap: wrap; /* لضمان أن العناصر تتناسب في الشاشات الصغيرة */
+  }
+  
+  /* الجزء الأيسر (اللوجو وزر البحث) */
+  .navbar-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-grow: 1; /* لملء المساحة المتاحة */
+    justify-self: flex-start;
+  }
+  
+  /* مربع البحث */
+.search-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  width: 700px;  /* عرض مربع البحث */
+  font-size: 14px;
+  border-right: none; /* إزالة الحدود اليمنى للمربع */
+}
+
+
+
+
+
+.search-btn:hover {
+  opacity: 0.8;
+}
+
+  /* اللوجو */
+  .navbar-logo img {
+    max-height: 50px;
+    object-fit: contain;
+  }
+  
+  /* الجزء الأيمن من الـ navbar */
+  .navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    justify-content: flex-end;
+  }
+  
+  /* صورة البروفايل */
+  .profile-pic {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    order: 2;
+  }
+  
+  /* الأزرار (Login و Sign Up) */
+  .btn {
+    padding: 8px 16px;
+    border: none;
+    background-color: transparent;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    order: 1;
+    text-decoration: none;
+  }
+  
+  .btn:hover {
+    opacity: 0.8;
+  }
+  
+  /* زر اللغة */
+  .language-btn {
+    background-color: white;
+    padding: 8px 12px;
+    cursor: pointer;
+    color: #7a7a7a;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-radius: 20px;
+  }
+  
+  /* أيقونة العلم */
+  .flag-icon {
+    width: 20px;
+    height: 15px;
+    object-fit: cover;
+  }
+  
+  /* القائمة المنسدلة للغة */
+  .language-dropdown {
+    position: relative;
+  }
+  
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    overflow: hidden;
+    z-index: 100;
+  }
+  
+  .dropdown-menu span {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    cursor: pointer;
+    white-space: nowrap;
+    gap: 10px;
+  }
+  
+  .dropdown-menu span:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .language-dropdown:hover .dropdown-menu {
+    display: block;
+  }
+  
+/* تصميم متجاوب للشاشات الصغيرة */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: row; /* ترتيب العناصر في صف واحد */
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 10px; /* تقليص الحواف */
+    gap: 5px; /* تقليص المسافة بين العناصر */
+    max-width: 100%; /* جعل الـ Navbar عرض كامل للشاشة */
+    width: 100%; /* جعل الـ Navbar يأخذ عرض الشاشة بالكامل */
+    box-sizing: border-box; /* لضمان احتساب الحواف في العرض */
+  }
+
+  .navbar-left {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* تقليص المسافة بين العناصر */
+    flex-grow: 1;
+  }
+
+  .search-container {
+    display: flex;
+    align-items: center;
+    gap: 5px; /* مسافة بين مربع البحث وزر البحث */
+  }
+
+  .search-input {
+    width: 150px; /* تقليص عرض مربع البحث */
+    font-size: 10px; /* تقليص حجم النص داخل مربع البحث */
+    padding: 5px; /* تقليص الحشو داخل مربع البحث */
+  }
+
+  .search-btn {
+    width: 30px; /* تقليص عرض زر البحث */
+    font-size: 10px; /* تقليص حجم النص في الزر */
+    padding: 5px; /* تقليص الحشو داخل الزر */
+  }
+
+  .navbar-logo img {
+    max-height: 25px; /* تقليص حجم اللوجو */
+    object-fit: contain;
+  }
+
+  /* إخفاء الجزء الأيمن من الـ navbar */
+  .navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 5px; /* تقليص المسافة بين الأزرار */
+  }
+
+  /* دمج أزرار Login و Sign Up في نفس الصف */
+  .btn {
+    padding: 6px 10px; /* تقليص الحواف */
+    font-size: 12px; /* تقليص حجم النص */
+    margin: 0 3px; /* تقليص المسافة بين الأزرار */
+  }
+
+  .profile-pic {
+    display: none; /* إخفاء صورة البروفايل في شاشات الموبايل */
+  }
+
+  /* إزالة زر اللغة */
+  .language-btn {
+    display: none;
+  }
+
+  /* إخفاء العناصر غير الضرورية */
+  .menu-btn {
+    display: none; /* إخفاء قائمة الأزرار في الشاشات الصغيرة */
+  }
+}
+

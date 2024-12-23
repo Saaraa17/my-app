@@ -1,0 +1,151 @@
+.recommended-products {
+  padding: 40px 20px;
+  background-color: #f9f9f9;
+}
+
+.recommended-products h2 {
+  color: #1E1E1E;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.section-header {
+  position: relative;
+}
+
+.section-header .see-more {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: #7A7A7A;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.product-card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  margin-top: 30px;
+}
+
+.product-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+}
+
+.product-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.product-details {
+  padding: 10px;
+}
+
+.product-details h3 {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.product-details p {
+  font-size: 12px;
+  color: #7A7A7A;
+}
+/* لشاشات صغيرة (أقل من 768px) */
+@media (max-width: 768px) {
+  .recommended-products {
+    padding: 20px 10px;
+  }
+
+  .recommended-products h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  .section-header .see-more {
+    font-size: 12px;
+    top: 5px;
+    right: 5px;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+  }
+
+  .product-card {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 15px;
+  }
+
+  .product-image {
+    height: 150px;
+  }
+
+  .product-details h3 {
+    font-size: 12px;
+  }
+
+  .product-details p {
+    font-size: 10px;
+  }
+}
+
+/* لشاشات صغيرة جدًا (أقل من 480px) */
+@media (max-width: 480px) {
+  .recommended-products {
+    padding: 15px 5px;
+  }
+
+  .recommended-products h2 {
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+
+  .section-header .see-more {
+    font-size: 10px;
+    top: 3px;
+    right: 3px;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 8px;
+  }
+
+  .product-card {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    margin-top: 15px;
+  }
+
+  .product-image {
+    height: 120px;
+  }
+
+  .product-details {
+    padding: 8px;
+  }
+
+  .product-details h3 {
+    font-size: 10px;
+  }
+
+  .product-details p {
+    font-size: 8px;
+  }
+}

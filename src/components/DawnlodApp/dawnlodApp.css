@@ -1,0 +1,167 @@
+/* قسم التطبيق */
+.app-section {
+  display: flex;
+  align-items: center;
+  background-color: #EE2957; /* خلفية حمراء */
+  padding: 20px;
+  margin: 0 auto;
+  max-width: 1200px; /* تحديد أقصى عرض للقسم */
+  border-radius: 10px;
+}
+
+/* الصورة */
+.app-image {
+  margin-right: 20px; /* مسافة بين الصورة والنص */
+}
+
+.app-image img {
+  width: 300px; /* حجم الصورة */
+  height: auto;
+  border-radius: 10px;
+}
+
+/* المحتوى النصي */
+.app-content {
+  color: white; /* النصوص باللون الأبيض */
+  flex: 1;
+  text-align: left;
+}
+
+/* العنوان */
+.app-content h2 {
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* النصوص */
+.app-content p {
+  color: white;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+/* روابط المتاجر */
+.download-buttons {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.download-icon {
+  width: 100px; /* حجم الأيقونات */
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.3s ease; /* تأثير عند التمرير */
+  margin-top: 10px;
+}
+
+.download-icon:hover {
+  transform: scale(1.1); /* تكبير الأيقونات عند التمرير */
+}
+
+/* وسائل الاستجابة */
+@media (max-width: 768px) {
+  .app-section {
+    flex-direction: row; /* ترتيب أفقي للعناصر */
+    align-items: center; /* محاذاة العناصر عموديًا */
+    justify-content: center; /* توسيط العناصر */
+    gap: 10px; /* مسافة صغيرة بين الصورة والنص */
+    padding: 10px; /* تقليل الحواف */
+    margin-left: 5px;
+  }
+
+  .app-image {
+    margin-right: 10px; /* تقليل المسافة بين الصورة والنص */
+    flex: 0 0 150px; /* تصغير حجم الصورة */
+  }
+
+  .app-image img {
+    width: 150px; /* تصغير الصورة */
+    height: auto;
+    border-radius: 5px;
+  }
+
+  .app-content {
+    flex: 1; /* تمديد النص ليشغل المساحة المتاحة */
+    text-align: left;
+  }
+
+  .app-content h2 {
+    font-size: 14px; /* تصغير العنوان */
+    margin-bottom: 5px;
+  }
+
+  .app-content p {
+    font-size: 12px; /* تصغير النص */
+    margin-bottom: 5px;
+  }
+
+  .download-buttons {
+    display: flex;
+    gap: 5px; /* تقليل المسافة بين الأزرار */
+    justify-content: flex-start;
+  }
+
+  .download-icon {
+    width: 60px; /* تصغير حجم الأيقونات */
+    height: auto;
+    margin-top: 5px;
+  }
+}
+
+/* Media Query للأجهزة الأصغر من 480px */
+@media (max-width: 480px) {
+  .app-section {
+    flex-direction: row; /* العناصر بجانب بعضها */
+    align-items: center; /* محاذاة عمودية في الوسط */
+    justify-content: center; /* توسيط العناصر أفقيًا */
+    gap: 5px; /* مسافة صغيرة جدًا بين العناصر */
+    padding: 5px; /* تقليل الحواف الداخلية */
+    margin-right: 3px;
+    margin-top: 10px;
+  }
+
+  .app-image {
+    flex: 0 0 60px; /* الصورة تأخذ مساحة صغيرة جدًا */
+    margin-right: 3px; /* تقليل المسافة بين الصورة والنص */
+  }
+
+  .app-image img {
+    width: 80px; /* حجم الصورة النهائي */
+    height: 90px;
+    border-radius: 3px; /* زوايا أقل دائرية */
+  }
+
+  .app-content {
+    flex: 1; /* النص يشغل باقي المساحة */
+    text-align: left; /* محاذاة النص */
+  }
+
+  .app-content h2 {
+    font-size: 10px; /* حجم صغير جدًا للعنوان */
+    margin-bottom: 3px;
+  }
+
+  .app-content p {
+    font-size: 8px; /* حجم صغير جدًا للنص */
+    margin-bottom: 3px;
+    line-height: 1.2; /* تقليل المسافة بين الأسطر */
+  }
+
+  .download-buttons {
+    display: flex;
+    gap: 3px; /* مسافة صغيرة بين الأزرار */
+    justify-content: flex-start; /* الأزرار بجانب بعضها */
+  }
+
+  .download-icon {
+    width: 45px; /* حجم صغير جدًا للأيقونات */
+    height: auto;
+    margin-top: 11px;
+  }
+}
+
+
