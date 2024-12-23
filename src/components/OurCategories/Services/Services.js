@@ -2,11 +2,13 @@ import React, { useState, useEffect } from "react";
 import "./Services.css";
 import CategoriesNav from "../categoriesNav/categoriesNav";
 import { fetchData } from "../dataApi"; 
+import { useProductModal } from '../../ProductModalManager/ProductModal'; 
 
 const Services = () => {
   const [data, setData] = useState([]); 
   const [loading, setLoading] = useState(true); 
   const [error, setError] = useState(null);
+  const { ProductModal, openModal } = useProductModal();
 
   // جلب البيانات حسب فئة Services
   useEffect(() => {
@@ -35,7 +37,11 @@ const Services = () => {
       <div className="Services-container">
         {data.map((services) => (
           <div key={services.id} className="Services-card">
-            <img src={services.images} alt={services.name} className="Services-image" />
+              <img 
+               src={services.images} 
+               alt={services.name} 
+               className="Services-image" 
+               onClick={() => openModal(services)} />
             <div className="Services-content">
               <h3 className="Services-name">{services.title}</h3>
               <p className="Services-description">{services.description}</p>
@@ -45,6 +51,7 @@ const Services = () => {
           </div>
         ))}
       </div>
+      <ProductModal /> 
     </div>
   );
 };

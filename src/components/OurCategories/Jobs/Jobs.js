@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import "./Jobs.css";
 import CategoriesNav from "../categoriesNav/categoriesNav";
+import { useProductModal } from '../../ProductModalManager/ProductModal'; 
 
 const Jobs = () => {
   const [data, setData] = useState([]); 
   const [loading, setLoading] = useState(true); 
   const [error, setError] = useState(null);
+  const { ProductModal, openModal } = useProductModal();
 
  
   const fetchData = async () => {
@@ -38,7 +40,7 @@ const Jobs = () => {
       <div className="Jobs-container">
         {data.map((jobs) => (
           <div key={jobs.id} className="Jobs-card">
-            <img src={jobs.image} alt={jobs.name} className="Jobs-image" />
+            <img src={jobs.image} alt={jobs.name} className="Jobs-image" onClick={() => openModal(jobs)}/>
             <div className="Jobs-content">
               <h3 className="Jobs-name">{jobs.name}</h3>
               <p className="Jobs-description">{jobs.description}</p>
@@ -47,6 +49,7 @@ const Jobs = () => {
           </div>
         ))}
       </div>
+      <ProductModal />
     </div>
   );
 };

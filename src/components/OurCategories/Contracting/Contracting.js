@@ -2,11 +2,13 @@ import React, { useState, useEffect } from "react";
 import "./Contracting.css";
 import CategoriesNav from "../categoriesNav/categoriesNav";
 import { fetchData } from "../dataApi"; 
+import { useProductModal } from '../../ProductModalManager/ProductModal';
 
 const Contracting = () => {
   const [data, setData] = useState([]); 
   const [loading, setLoading] = useState(true); 
   const [error, setError] = useState(null);
+  const { ProductModal, openModal } = useProductModal();
 
   // جلب البيانات حسب فئة Contracting
   useEffect(() => {
@@ -35,7 +37,12 @@ const Contracting = () => {
       <div className="Contracting-container">
         {data.map((contracting) => (
           <div key={contracting.id} className="Contracting-card">
-            <img src={contracting.images} alt={contracting.name} className="Contracting-image" />
+             <img 
+             src={contracting.images} 
+             alt={contracting.name} 
+             className="Contracting-image" 
+             onClick={() => openModal(contracting)}
+             />
             <div className="Contracting-content">
               <h3 className="contracting-name">{contracting.title}</h3>
               <h3 className="Contracting-name">{contracting.name}</h3>
@@ -45,6 +52,7 @@ const Contracting = () => {
           </div>
         ))}
       </div>
+      <ProductModal /> {/* عرض الـ modal عند فتحه */}
     </div>
   );
 };

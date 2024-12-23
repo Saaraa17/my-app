@@ -1,28 +1,28 @@
-/* قسم animals */
-.animals-section {
-  padding: 40px 5%;
+/* قسم Animal */
+.Animal-section {
+  padding: 40px 20px;
   background-color: #f9f9f9;
   margin-top: 40px;
 }
 
-.animals-section h2 {
+.Animal-section h2 {
   color: #1E1E1E;
-  font-size: 2rem; /* استخدام وحدة مرنة */
+  font-size: 24px;
   font-weight: bold;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
   text-align: center;
 }
 
 .section-header {
   position: relative;
-  margin-bottom: 30px;
+  margin-bottom: 100px;
 }
 
 .section-header .see-more {
   position: absolute;
   right: 0;
   color: #7A7A7A;
-  font-size: 1rem;
+  font-size: 15px;
   text-decoration: none;
 }
 
@@ -51,104 +51,89 @@
 
 .Animal-image {
   width: 100%;
-  height: 200px;
+  height: 250px;
   object-fit: cover;
 }
 
 .Animal-details {
-  padding: 10px;
+  padding: 15px;
   text-align: left;
 }
 
 .Animal-details h3 {
-  font-size: 1.2rem;
+  font-size: 16px;
   font-weight: bold;
   margin-bottom: 5px;
 }
 
-.Animal-details .Animal-description {
-  color: #7A7A7A;
-  font-size: 1rem;
-  margin-bottom: 10px;
-}
-
-.Animal-details .Animal-price {
-  font-size: 1rem;
+.Animal-details .price {
+  font-size: 16px;
+  font-weight: bold;
   color: #1E1E1E;
 }
-
-.Animal-details .Animal-location {
-  font-size: 0.9rem;
-  color: #555;
-  margin-top: 5px;
-}
-
-/* وسائل الاستجابة */
 
 /* شاشات صغيرة أقل من 768px */
 @media (max-width: 768px) {
   .Animal-grid {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* تقليل حجم الأعمدة */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
   }
 
   .Animal-card {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transform: scale(0.95); /* تصغير البطاقة قليلاً */
+    transform: scale(0.95);
     margin-top: 10px;
   }
 
   .Animal-image {
-    height: 180px; /* تصغير ارتفاع الصورة */
+    height: 180px;
   }
 
   .Animal-details {
-    padding: 10px; /* تقليل المسافة الداخلية */
+    padding: 10px;
   }
 
   .Animal-details h3 {
-    font-size: 1rem; /* تقليل حجم النص */
+    font-size: 1rem;
   }
 
-  .Animal-details .Animal-description,
-  .Animal-details .Animal-price,
-  .Animal-details .Animal-location {
-    font-size: 0.85rem; /* تقليل حجم الخطوط */
+  .Animal-details .price {
+    font-size: 0.85rem;
   }
 }
 
 /* شاشات صغيرة جدًا أقل من 480px */
 @media (max-width: 480px) {
-  
   .Animal-grid {
-    margin-top: 25px; /* زيادة المسافة بين See More والـ Cards */
+    margin-top: 25px;
     grid-template-columns: 1fr;
     gap: 10px;
   }
+
   .section-header {
-    margin-bottom: 10px; /* تقليل المسافة العامة */
+    margin-bottom: 10px;
   }
 
   .Animal-card {
     margin: 0 auto;
-    width: 90%; /* تصغير عرض البطاقة */
-    transform: scale(0.9); /* تصغير البطاقة أكثر */
+    width: 90%;
+    transform: scale(0.9);
+    margin: 10px;
   }
 
   .Animal-image {
-    height: 150px; /* تقليل ارتفاع الصورة */
+    height: 150px;
   }
 
   .Animal-details {
-    padding: 8px; /* تقليل المسافة الداخلية */
+    padding: 8px;
   }
 
   .Animal-details h3 {
-    font-size: 0.9rem; /* تقليل حجم النص */
+    font-size: 0.9rem;
   }
 
-  .Animal-details .Animal-description,
-  .Animal-details .Animal-price,
-  .Animal-details .Animal-location {
-    font-size: 0.75rem; /* تقليل حجم الخطوط أكثر */
+  .Animal-details .price {
+    font-size: 0.75rem;
   }
 }

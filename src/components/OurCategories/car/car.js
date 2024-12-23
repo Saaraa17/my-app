@@ -2,11 +2,13 @@ import React, { useState, useEffect } from "react";
 import "./car.css";
 import CategoriesNav from "../categoriesNav/categoriesNav";
 import { fetchData } from "../dataApi"; // استيراد الدالة من api.js
+import { useProductModal } from '../../ProductModalManager/ProductModal';
 
 const Car = () => {
   const [filteredData, setFilteredData] = useState([]); // قائمة الفئات المفلترة
   const [loading, setLoading] = useState(true); 
   const [error, setError] = useState(null);
+  const { ProductModal, openModal } = useProductModal();
 
   useEffect(() => {
     const loadData = async () => {
@@ -34,7 +36,11 @@ const Car = () => {
       <div className="car-container">
         {filteredData.map((car) => (
           <div key={car.id} className="car-card">
-            <img src={car.images} alt={car.name} className="car-image" />
+            <img src={car.images}
+             alt={car.name}
+              className="car-image"
+              onClick={() => openModal(car)}
+               />
             <div className="car-content">
               <h3 className="car-name">{car.title}</h3>
               <p className="car-description">{car.description}</p>
@@ -44,6 +50,7 @@ const Car = () => {
           </div>
         ))}
       </div>
+      <ProductModal />
     </div>
   );
 };

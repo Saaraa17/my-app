@@ -13,8 +13,8 @@ const AnimalsSection = () => {
   useEffect(() => {
     const fetchAnimals = async () => {
       try {
-        const data = await fetchData('Animals'); // Fetch Animals data
-        setAnimals(data);
+        const result = await fetchData('Animals'); // Fetch Animals data
+        setAnimals(result);
       } catch (err) {
         setError(err.message);
       } finally {
@@ -26,13 +26,15 @@ const AnimalsSection = () => {
   }, []);
 
   return (
-    <div className="animals-section">
-      <h2>All in Animals</h2>
-      <div className="Animal-grid">
-        {Animals.length === 0 ? (
-          <p>Loading...</p>
-        ) : (
-          Animals.map((Animal) => (
+      <div className="Animal-section">
+        <h2>All in Animal</h2>
+        <div className="section-header">
+          <Link to="/Animal" className="see-more">See More {'>'}</Link>
+        </div>
+        <div className="Animal-grid">
+          {loading && <p>Loading...</p>}
+          {error && <p style={{ color: "red" }}>{error}</p>}
+          {Animals.map((Animal) => (
             <div
               className="Animal-card"
               key={Animal.id}
@@ -41,12 +43,13 @@ const AnimalsSection = () => {
               <img src={Animal.images} alt={Animal.title} className="Animal-image" />
               <div className="Animal-details">
                 <h3>{Animal.title}</h3>
-                <p>{Animal.description}</p>
+                <p className="Animal-description">{Animal.description}</p>
+                <p className="Animal-price">Price: {Animal.price}</p>
+                <p className="Animal-location">Location: {Animal.location}</p>
               </div>
             </div>
-          ))
-        )}
-      </div>
+          ))}
+        </div>
 
       {/* عرض الـModal */}
       <ProductModal />

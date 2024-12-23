@@ -2,11 +2,13 @@ import React, { useState, useEffect } from "react";
 import "./Furniture.css";
 import CategoriesNav from "../categoriesNav/categoriesNav";
 import { fetchData } from "../dataApi"; 
+import { useProductModal } from '../../ProductModalManager/ProductModal'; 
 
 const Furniture = () => {
   const [data, setData] = useState([]); 
   const [loading, setLoading] = useState(true); 
   const [error, setError] = useState(null);
+  const { ProductModal, openModal } = useProductModal();
 
   // جلب البيانات حسب فئة Furniture
   useEffect(() => {
@@ -35,7 +37,12 @@ const Furniture = () => {
       <div className="Furniture-container">
         {data.map((furniture) => (
           <div key={furniture.id} className="Furniture-card">
-            <img src={furniture.images} alt={furniture.name} className="Furniture-image" />
+             <img
+              src={furniture.images} 
+              alt={furniture.name}
+               className="Furniture-image" 
+               onClick={() => openModal(furniture)}
+               />
             <div className="Furniture-content">
               <h3 className="Furniture-name">{furniture.title}</h3>
               <p className="Furniture-description">{furniture.description}</p>
@@ -45,6 +52,7 @@ const Furniture = () => {
           </div>
         ))}
       </div>
+      <ProductModal /> 
     </div>
   );
 };

@@ -2,11 +2,13 @@ import React, { useState, useEffect } from "react";
 import "./Electronics.css";
 import CategoriesNav from "../categoriesNav/categoriesNav";
 import { fetchData } from "../dataApi"; 
+import { useProductModal } from '../../ProductModalManager/ProductModal'; 
 
 const Electronics = () => {
   const [data, setData] = useState([]); 
   const [loading, setLoading] = useState(true); 
   const [error, setError] = useState(null);
+  const { ProductModal, openModal } = useProductModal();
 
   // جلب البيانات حسب فئة Electronics
   useEffect(() => {
@@ -35,7 +37,12 @@ const Electronics = () => {
       <div className="Electronics-container">
         {data.map((electronics) => (
           <div key={electronics.id} className="Electronics-card">
-            <img src={electronics.image} alt={electronics.name} className="Electronics-image" />
+             <img 
+               src={electronics.images}
+               alt={electronics.name} 
+               className="Electronics-image"
+               onClick={() => openModal(electronics)}
+                />
             <div className="Electronics-content">
               <h3 className="Electronics-name">{electronics.title}</h3>
               <p className="Electronics-description">{electronics.description}</p>
@@ -45,6 +52,7 @@ const Electronics = () => {
           </div>
         ))}
       </div>
+      <ProductModal /> 
     </div>
   );
 };

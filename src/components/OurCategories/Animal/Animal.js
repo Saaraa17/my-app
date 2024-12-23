@@ -2,11 +2,16 @@ import React, { useState, useEffect } from "react";
 import "./Animal.css";
 import CategoriesNav from "../categoriesNav/categoriesNav";
 import { fetchData } from "../dataApi"; 
+import { useProductModal } from '../../ProductModalManager/ProductModal';  // استيراد الفنكشن
+
 const Animal = () => {
   const [data, setData] = useState([]); 
   const [loading, setLoading] = useState(true); 
   const [error, setError] = useState(null);
 
+  // استيراد الفنكشن لاستخدامها في هذا الكومبوننت
+  
+    const { ProductModal, openModal } = useProductModal();
   // جلب البيانات عند تحميل الكومبوننت
   useEffect(() => {
     const fetchAnimals = async () => {
@@ -34,7 +39,12 @@ const Animal = () => {
       <div className="Animal-container">
         {data.map((animal) => (
           <div key={animal.id} className="Animal-Animald">
-            <img src={animal.images} alt={animal.name} className="Animal-image" />
+            <img 
+              src={animal.images} 
+              alt={animal.name} 
+              className="Animal-image" 
+              onClick={() => openModal(animal)} // فتح الـ modal عند الضغط على الصورة
+            />
             <div className="Animal-content">
               <h3 className="animal-name">{animal.title}</h3>
               <p className="animal-description">{animal.description}</p>
@@ -44,6 +54,8 @@ const Animal = () => {
           </div>
         ))}
       </div>
+
+      <ProductModal /> {/* عرض الـ modal عند فتحه */}
     </div>
   );
 };

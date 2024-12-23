@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './productModal.css';
 
+
 export const useProductModal = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [product, setProduct] = useState(null);
