@@ -1,56 +1,62 @@
 import React, { useState, useEffect } from "react";
 import "./car.css";
 import CategoriesNav from "../categoriesNav/categoriesNav";
-import { fetchData } from "../dataApi"; // استيراد الدالة من api.js
-import { useProductModal } from '../../ProductModalManager/ProductModal';
+import { fetchData } from "../../Api/dataApi"; 
+import { Link } from "react-router-dom"; 
+import { useTranslation } from "react-i18next";
 
 const Car = () => {
-  const [filteredData, setFilteredData] = useState([]); // قائمة الفئات المفلترة
-  const [loading, setLoading] = useState(true); 
+  const { t } = useTranslation();  
+  const [filteredData, setFilteredData] = useState([]); 
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const { ProductModal, openModal } = useProductModal();
 
   useEffect(() => {
     const loadData = async () => {
       try {
-        const data = await fetchData("Cars"); // استخدام الفئة "Cars"
-        setFilteredData(data); 
+        const data = await fetchData("Cars"); 
+        setFilteredData(data);
       } catch (err) {
-        setError(err.message); 
+        setError(err.message);
       } finally {
         setLoading(false);
       }
     };
-    
-    loadData(); 
+
+    loadData();
   }, []);
 
   return (
     <div className="car">
       <CategoriesNav />
-      <h2 className="car-title">Available Cars</h2>
+      <h2 className="car-title">{t("available_cars")}</h2>
 
-      {loading && <p>Loading...</p>}
-      {error && <p style={{ color: "red" }}>{error}</p>} 
+      {loading && <p>{t("loading")}</p>}
+      {error && <p style={{ color: "red" }}>{t("error_message")}: {error}</p>}
 
       <div className="car-container">
         {filteredData.map((car) => (
-          <div key={car.id} className="car-card">
-            <img src={car.images}
-             alt={car.name}
-              className="car-image"
-              onClick={() => openModal(car)}
-               />
+          <div key={car.id || car._id} className="car-card">
+            <Link to={`/product/${car.id || car._id}`}>
+              <img
+                src={
+                  Array.isArray(car.images) && car.images.length > 0
+                    ? car.images[0]
+                    : t("no_image")
+                }
+                alt={car.title || t("no_name")}
+                className="car-image"
+              />
+            </Link>
             <div className="car-content">
-              <h3 className="car-name">{car.title}</h3>
-              <p className="car-description">{car.description}</p>
-              <p className="car-price">Price: {car.price}</p>
-              <p className="car-location">Location: {car.location}</p>
+              <h3 className="car-name">{car.title || t("no_name")}</h3>
+              <p className="car-description">{car.description || t("no_description")}</p>
+              <p className="car-price">{t("price")}: {car.price || t("no_price")}</p>
+              <p className="car-location">{t("location")}: {car.location || t("no_location")}</p>
             </div>
           </div>
         ))}
       </div>
-      <ProductModal />
     </div>
   );
 };

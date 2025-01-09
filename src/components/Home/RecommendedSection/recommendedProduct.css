@@ -1,0 +1,126 @@
+/* صفحة المنتجات الموصى بها */
+.recommended-product-page {
+    padding: 40px 20px;
+    background-color: #f9f9f9;
+  }
+  
+  .recommended-product-page h1 {
+    color: #1E1E1E;
+    font-size: 26px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+  }
+  
+  .product-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .product-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+  }
+  
+  .product-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .product-details {
+    padding: 10px;
+  }
+  
+  .product-details h3 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .product-details p {
+    font-size: 14px;
+    color: #7A7A7A;
+  }
+  
+  /* Media Queries لتصميم الشاشات الصغيرة */
+  @media (max-width: 768px) {
+    .recommended-product-page {
+      padding: 20px 10px;
+    }
+  
+    .recommended-product-page h1 {
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+  
+    .product-grid {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 10px;
+    }
+  
+    .product-card {
+      margin-top: 15px;
+    }
+  
+    .product-image {
+      height: 150px;
+    }
+  
+    .product-details h3 {
+      font-size: 14px;
+    }
+  
+    .product-details p {
+      font-size: 12px;
+    }
+  }
+  
+  /* Media Queries لشاشات صغيرة جدًا */
+  @media (max-width: 480px) {
+    .recommended-product-page {
+      padding: 15px 5px;
+    }
+  
+    .recommended-product-page h1 {
+      font-size: 18px;
+      margin-bottom: 15px;
+    }
+  
+    .product-grid {
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 8px;
+    }
+  
+    .product-card {
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+  
+    .product-image {
+      height: 120px;
+    }
+  
+    .product-details {
+      padding: 8px;
+    }
+  
+    .product-details h3 {
+      font-size: 12px;
+    }
+  
+    .product-details p {
+      font-size: 10px;
+    }
+  }
+  

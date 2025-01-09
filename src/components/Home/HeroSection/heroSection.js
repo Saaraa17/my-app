@@ -2,25 +2,29 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './heroSection.css';
 import image from '../../assets/Rectangle 3.png';
+import { useSelector } from 'react-redux';  
+import { useTranslation } from 'react-i18next';
 
 const HeroSection = () => {
+  const { t } = useTranslation();
   const [currentIndex, setCurrentIndex] = useState(0);
-
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);  
+  
   const images = [
     {
       src: image,
-      title: 'Welcome to Your Creative Space',
-      description: 'This is where your ideas come to life—upload any item you need and start creating now!',
+      title: t('welcome_title'),
+      description: t('welcome_description'),
     },
     {
       src: image,
-      title: 'Your Uploads, Your Way',
-      description: 'Easily upload and organize your items in just a few clicks—it’s fast, simple, and all yours.',
+      title: t('your_uploads_title'),
+      description: t('your_uploads_description'),
     },
     {
       src: image,
-      title: 'Start Adding Your Items Now',
-      description: 'Upload anything you want and have it ready whenever you need—it’s that easy!',
+      title: t('start_adding_title'),
+      description: t('start_adding_description'),
     }
   ];
 
@@ -40,8 +44,10 @@ const HeroSection = () => {
         <div className="hero-text">
           <h1>{images[currentIndex].title}</h1>
           <p>{images[currentIndex].description}</p>
-          {/* Modified button to a link */}
-          <Link to="/PlaceItem" className="explore-btn">Place Item</Link>
+          {/* عرض رابط Place Item فقط إذا كان المستخدم مسجلاً دخوله */}
+          {isLoggedIn && (
+            <Link to="/PlaceItem" className="explore-btn">{t('place_item')}</Link>
+          )}
         </div>
       </div>
       <button onClick={nextImage} className="next-arrow">{`>`}</button>

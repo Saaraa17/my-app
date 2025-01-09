@@ -1,20 +1,23 @@
-import React, { useState, useCallback } from 'react';
-import './PlaceItem.css';
+/* eslint-disable no-unused-vars */
+import React, { useState, useCallback } from "react";
+import { useTranslation } from "react-i18next";
+import "./PlaceItem.css";
 
 const PlaceItem = () => {
+  const { t } = useTranslation();
   const [items, setItems] = useState([]);
   const [formData, setFormData] = useState({
-    title: '',
-    description: '',
-    price: '',
-    location: '',
-    category: 'Cars', // القيمة الافتراضية
-    condition: '',
-    subcategory: '',
-    images: []
+    title: "",
+    description: "",
+    price: "",
+    location: "",
+    category: "Cars", // القيمة الافتراضية
+    condition: "",
+    subcategory: "",
+    images: [],
   });
 
-  const apiUrl = 'https://demo.kwtmarkets.com'; // رابط الـ API
+  const apiUrl = "https://kwtmarkets.net/back/items?status=act"; // رابط الـ API
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -24,7 +27,7 @@ const PlaceItem = () => {
   const handleImageChange = (e) => {
     const files = Array.from(e.target.files);
     if (files.length > 5) {
-      alert('You can upload up to 5 images only.');
+      alert("You can upload up to 5 images only.");
       return;
     }
     setFormData((prev) => ({ ...prev, images: files }));
@@ -33,36 +36,39 @@ const PlaceItem = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // إذا لم يختار المستخدم فئة، يتم تعيين "Cars" كفئة افتراضية
+    const category = formData.category || "Cars";
+
     const data = new FormData();
-    Object.entries(formData).forEach(([key, value]) => {
-      if (key === 'images') {
-        value.forEach((file) => data.append('images', file));
+    Object.entries({ ...formData, category }).forEach(([key, value]) => {
+      if (key === "images") {
+        value.forEach((file) => data.append("images", file));
       } else {
         data.append(key, value);
       }
     });
 
     try {
-      const response = await fetch(`${apiUrl}/items`, { method: 'POST', body: data });
+      const response = await fetch(`${apiUrl}`, { method: "POST", body: data });
       if (response.ok) {
-        alert('Item uploaded successfully!');
+        alert(t("upload_item_button") + "!");
         setFormData({
-          title: '',
-          description: '',
-          price: '',
-          location: '',
-          category: 'Cars',
-          condition: '',
-          subcategory: '',
-          images: []
+          title: "",
+          description: "",
+          price: "",
+          location: "",
+          category: "Cars", // إعادة التعيين للقيمة الافتراضية
+          condition: "",
+          subcategory: "",
+          images: [],
         });
       } else {
         const error = await response.json();
         alert(`Error: ${error.message}`);
       }
     } catch (err) {
-      console.error('Error uploading item:', err);
-      alert('Failed to upload item.');
+      console.error("Error uploading item:", err);
+      alert(t("failed_to_upload_item"));
     }
   };
 
@@ -72,19 +78,19 @@ const PlaceItem = () => {
       const data = await response.json();
       setItems(data);
     } catch (err) {
-      console.error('Error fetching items:', err);
-      alert('Failed to fetch items.');
+      console.error("Error fetching items:", err);
+      alert(t("failed_to_fetch_items"));
     }
-  }, []);
+  }, [t]);
 
   return (
     <div className="placeitem-container">
       <div className="form-container">
-        <h1>Place your item</h1>
+        <h1>{t("place_item_title")}</h1>
         <form onSubmit={handleSubmit}>
           <div className="form-grid">
             <div>
-              <label>Title:</label>
+              <label>{t("title")}</label>
               <input
                 type="text"
                 name="title"
@@ -94,7 +100,7 @@ const PlaceItem = () => {
               />
             </div>
             <div>
-              <label>Description:</label>
+              <label>{t("description")}</label>
               <textarea
                 name="description"
                 value={formData.description}
@@ -103,7 +109,7 @@ const PlaceItem = () => {
               />
             </div>
             <div>
-              <label>Price:</label>
+              <label>{t("price")}</label>
               <input
                 type="number"
                 name="price"
@@ -113,7 +119,7 @@ const PlaceItem = () => {
               />
             </div>
             <div>
-              <label>Location:</label>
+              <label>{t("location")}</label>
               <input
                 type="text"
                 name="location"
@@ -123,12 +129,11 @@ const PlaceItem = () => {
               />
             </div>
             <div>
-              <label>Category:</label>
+              <label>{t("category")}</label>
               <select
                 name="category"
                 value={formData.category}
                 onChange={handleInputChange}
-                required
               >
                 <option value="Cars">Cars</option>
                 <option value="Property">Property</option>
@@ -143,7 +148,7 @@ const PlaceItem = () => {
               </select>
             </div>
             <div>
-              <label>Condition:</label>
+              <label>{t("condition")}</label>
               <input
                 type="text"
                 name="condition"
@@ -153,7 +158,7 @@ const PlaceItem = () => {
               />
             </div>
             <div>
-              <label>Subcategory:</label>
+              <label>{t("subcategory")}</label>
               <input
                 type="text"
                 name="subcategory"
@@ -162,7 +167,7 @@ const PlaceItem = () => {
               />
             </div>
             <div>
-              <label>Images (up to 5):</label>
+              <label>{t("images_label")}</label>
               <input
                 type="file"
                 name="images"
@@ -172,10 +177,13 @@ const PlaceItem = () => {
               />
             </div>
           </div>
-          <button type="submit">Upload Item</button>
+          <button type="submit">{t("upload_item_button")}</button>
         </form>
       </div>
+    
+  
 
+{/*
       <div className="items-container">
         <button onClick={fetchItems}>See your Upload Item</button>
         <div id="itemsContainer">
@@ -201,6 +209,7 @@ const PlaceItem = () => {
           )}
         </div>
       </div>
+      */}
     </div>
   );
 };

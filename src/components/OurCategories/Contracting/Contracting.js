@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import "./Contracting.css";
 import CategoriesNav from "../categoriesNav/categoriesNav";
-import { fetchData } from "../dataApi"; 
-import { useProductModal } from '../../ProductModalManager/ProductModal';
+import { fetchData } from "../../Api/dataApi"; 
+import { Link } from "react-router-dom";
 
 const Contracting = () => {
-  const [data, setData] = useState([]); 
-  const [loading, setLoading] = useState(true); 
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const { ProductModal, openModal } = useProductModal();
+  const { t } = useTranslation();
 
-  // جلب البيانات حسب فئة Contracting
   useEffect(() => {
     const fetchContracting = async () => {
       try {
-        const result = await fetchData('Contracting'); // تصفية البيانات حسب فئة Contracting
+        const result = await fetchData("Contracting");
         setData(result); 
       } catch (err) {
         setError(err.message); 
@@ -29,30 +29,33 @@ const Contracting = () => {
   return (
     <div className="Contracting">
       <CategoriesNav />
-      <h2 className="Contracting-title">Available Contracting</h2>
+      <h2 className="Contracting-title">{t("contracting")}</h2>
 
-      {loading && <p>Loading...</p>}
-      {error && <p style={{ color: "red" }}>{error}</p>} 
+      {loading && <p>{t("loading")}</p>}
+      {error && <p style={{ color: "red" }}>{t("error_message")}: {error}</p>} 
 
       <div className="Contracting-container">
         {data.map((contracting) => (
-          <div key={contracting.id} className="Contracting-card">
-             <img 
-             src={contracting.images} 
-             alt={contracting.name} 
-             className="Contracting-image" 
-             onClick={() => openModal(contracting)}
-             />
+          <div key={contracting.id || contracting._id} className="Contracting-card">
+            <Link to={`/product/${contracting.id || contracting._id}`}>
+              <img 
+                src={
+                  Array.isArray(contracting.images) && contracting.images.length > 0
+                    ? contracting.images[0]
+                    : t("no_image")
+                }
+                alt={contracting.title || t("no_name")} 
+                className="Contracting-image" 
+              />
+            </Link>
             <div className="Contracting-content">
-              <h3 className="contracting-name">{contracting.title}</h3>
-              <h3 className="Contracting-name">{contracting.name}</h3>
-              <p className="Contracting-description">{contracting.description}</p>
-              <p className="Contracting-price">Price: {contracting.price}</p>
+              <h3 className="contracting-name">{contracting.title || t("no_name")}</h3>
+              <p className="Contracting-description">{contracting.description || t("no_description")}</p>
+              <p className="Contracting-price">{t("price")}: {contracting.price || t("no_price")}</p>
             </div>
           </div>
         ))}
       </div>
-      <ProductModal /> {/* عرض الـ modal عند فتحه */}
     </div>
   );
 };

@@ -1,25 +1,25 @@
 import React, { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import "./Services.css";
 import CategoriesNav from "../categoriesNav/categoriesNav";
-import { fetchData } from "../dataApi"; 
-import { useProductModal } from '../../ProductModalManager/ProductModal'; 
+import { fetchData } from "../../Api/dataApi";
+import { Link } from "react-router-dom";
 
 const Services = () => {
-  const [data, setData] = useState([]); 
-  const [loading, setLoading] = useState(true); 
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const { ProductModal, openModal } = useProductModal();
+  const { t } = useTranslation();
 
-  // جلب البيانات حسب فئة Services
   useEffect(() => {
     const fetchServices = async () => {
       try {
-        const result = await fetchData('Services'); // تصفية البيانات حسب فئة Services
-        setData(result); 
+        const result = await fetchData("Services");
+        setData(result);
       } catch (err) {
-        setError(err.message); 
+        setError(err.message);
       } finally {
-        setLoading(false); 
+        setLoading(false);
       }
     };
 
@@ -29,29 +29,36 @@ const Services = () => {
   return (
     <div className="Services">
       <CategoriesNav />
-      <h2 className="Services-title">Available Services</h2>
+      <h2 className="Services-title">{t("available_services")}</h2>
 
-      {loading && <p>Loading...</p>}
-      {error && <p style={{ color: "red" }}>{error}</p>} 
+      {loading && <p>{t("loading")}</p>}
+      {error && <p style={{ color: "red" }}>{t("error_message", { message: error })}</p>}
 
       <div className="Services-container">
-        {data.map((services) => (
-          <div key={services.id} className="Services-card">
-              <img 
-               src={services.images} 
-               alt={services.name} 
-               className="Services-image" 
-               onClick={() => openModal(services)} />
+        {data.map((service) => (
+          <div key={service.id || service._id} className="Services-card">
+            <Link to={`/service/${service.id || service._id}`}>
+              <img
+                src={
+                  Array.isArray(service.images) && service.images.length > 0
+                    ? service.images[0]
+                    : t("default_image")
+                }
+                alt={service.title || t("no_name")}
+                className="Services-image"
+              />
+            </Link>
             <div className="Services-content">
-              <h3 className="Services-name">{services.title}</h3>
-              <p className="Services-description">{services.description}</p>
-              <p className="Services-price">Price: {services.price}</p>
-              <p className="Services-location">Location: {services.location}</p>
+              <h3 className="Services-name">{service.title || t("no_name")}</h3>
+              <p className="Services-description">{service.description || t("no_description")}</p>
+              <p className="Services-price">{t("price", { price: service.price || t("no_price") })}</p>
+              <p className="Services-location">
+                {t("location", { location: service.location || t("no_location") })}
+              </p>
             </div>
           </div>
         ))}
       </div>
-      <ProductModal /> 
     </div>
   );
 };

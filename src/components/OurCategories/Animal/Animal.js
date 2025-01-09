@@ -1,22 +1,20 @@
 import React, { useState, useEffect } from "react";
 import "./Animal.css";
 import CategoriesNav from "../categoriesNav/categoriesNav";
-import { fetchData } from "../dataApi"; 
-import { useProductModal } from '../../ProductModalManager/ProductModal';  // استيراد الفنكشن
+import { fetchData } from "../../Api/dataApi"; 
+import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const Animal = () => {
+  const { t } = useTranslation();
   const [data, setData] = useState([]); 
   const [loading, setLoading] = useState(true); 
   const [error, setError] = useState(null);
 
-  // استيراد الفنكشن لاستخدامها في هذا الكومبوننت
-  
-    const { ProductModal, openModal } = useProductModal();
-  // جلب البيانات عند تحميل الكومبوننت
   useEffect(() => {
     const fetchAnimals = async () => {
       try {
-        const result = await fetchData('Animals'); // تصفية البيانات حسب فئة Animals
+        const result = await fetchData("Animals"); 
         setData(result); 
       } catch (err) {
         setError(err.message); 
@@ -31,31 +29,34 @@ const Animal = () => {
   return (
     <div className="Animal">
       <CategoriesNav />
-      <h2 className="Animal-title">Available Animals</h2>
+      <h2 className="Animal-title">{t("available_animals")}</h2>
 
-      {loading && <p>Loading...</p>}
-      {error && <p style={{ color: "red" }}>{error}</p>} 
+      {loading && <p>{t("loading")}</p>}
+      {error && <p style={{ color: "red" }}>{t("error_message")}: {error}</p>} 
 
       <div className="Animal-container">
         {data.map((animal) => (
-          <div key={animal.id} className="Animal-Animald">
-            <img 
-              src={animal.images} 
-              alt={animal.name} 
-              className="Animal-image" 
-              onClick={() => openModal(animal)} // فتح الـ modal عند الضغط على الصورة
-            />
+          <div key={animal.id || animal._id} className="Animal-card">
+            <Link to={`/product/${animal.id || animal._id}`}>
+              <img 
+                src={
+                  Array.isArray(animal.images) && animal.images.length > 0
+                    ? animal.images[0]
+                    : t("no_image")
+                } 
+                alt={animal.title || t("no_name")} 
+                className="Animal-image" 
+              />
+            </Link>
             <div className="Animal-content">
-              <h3 className="animal-name">{animal.title}</h3>
-              <p className="animal-description">{animal.description}</p>
-              <p className="animal-price">Price: {animal.price}</p>
-              <p className="animal-location">Location: {animal.location}</p>
+              <h3 className="animal-name">{animal.title || t("no_name")}</h3>
+              <p className="animal-description">{animal.description || t("no_description")}</p>
+              <p className="animal-price">{t("price")}: {animal.price || t("no_price")}</p>
+              <p className="animal-location">{t("location")}: {animal.location || t("no_location")}</p>
             </div>
           </div>
         ))}
       </div>
-
-      <ProductModal /> {/* عرض الـ modal عند فتحه */}
     </div>
   );
 };

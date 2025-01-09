@@ -1,25 +1,25 @@
 import React, { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import "./Gifts.css";
 import CategoriesNav from "../categoriesNav/categoriesNav";
-import { fetchData } from "../dataApi"; 
-import { useProductModal } from '../../ProductModalManager/ProductModal'; 
+import { fetchData } from "../../Api/dataApi";
+import { Link } from "react-router-dom";
 
 const Gifts = () => {
-  const [data, setData] = useState([]); 
-  const [loading, setLoading] = useState(true); 
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const { ProductModal, openModal } = useProductModal();
+  const { t } = useTranslation();
 
-  // جلب البيانات حسب فئة Gifts
   useEffect(() => {
     const fetchGifts = async () => {
       try {
-        const result = await fetchData('Gifts'); // تصفية البيانات حسب فئة Gifts
-        setData(result); 
+        const result = await fetchData("Gifts");
+        setData(result);
       } catch (err) {
-        setError(err.message); 
+        setError(err.message);
       } finally {
-        setLoading(false); 
+        setLoading(false);
       }
     };
 
@@ -29,30 +29,34 @@ const Gifts = () => {
   return (
     <div className="Gifts">
       <CategoriesNav />
-      <h2 className="Gifts-title">Available Gifts</h2>
+      <h2 className="Gifts-title">{t("available_gifts")}</h2>
 
-      {loading && <p>Loading...</p>}
-      {error && <p style={{ color: "red" }}>{error}</p>} 
+      {loading && <p>{t("loading")}</p>}
+      {error && <p style={{ color: "red" }}>{t("error_message", { message: error })}</p>}
 
       <div className="Gifts-container">
         {data.map((gifts) => (
-          <div key={gifts.id} className="Gifts-card">
-            <img  
-             src={gifts.images} 
-             alt={gifts.name}
-             className="Gifts-image" 
-             onClick={() => openModal(gifts)}
-             />
+          <div key={gifts.id || gifts._id} className="Gifts-card">
+            <Link to={`/product/${gifts.id || gifts._id}`}>
+              <img
+                src={
+                  Array.isArray(gifts.images) && gifts.images.length > 0
+                    ? gifts.images[0]
+                    : t("default_image")
+                }
+                alt={gifts.title || t("no_name")}
+                className="Gifts-image"
+              />
+            </Link>
             <div className="Gifts-content">
-              <h3 className="Gifts-name">{gifts.title}</h3>
-              <p className="Gifts-description">{gifts.description}</p>
-              <p className="Gifts-price">Price: {gifts.price}</p>
-              <p className="Gifts-location">Location: {gifts.location}</p>
+              <h3 className="Gifts-name">{gifts.title || t("no_name")}</h3>
+              <p className="Gifts-description">{gifts.description || t("no_description")}</p>
+              <p className="Gifts-price">{t("price", { price: gifts.price || t("no_price") })}</p>
+              <p className="Gifts-location">{t("location", { location: gifts.location || t("no_location") })}</p>
             </div>
           </div>
         ))}
       </div>
-      <ProductModal /> 
     </div>
   );
 };

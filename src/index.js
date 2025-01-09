@@ -3,11 +3,19 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import './Language/i18n';
+
+
+// استيراد Provider من react-redux وربط الـ store
+import { Provider } from 'react-redux';
+import { store } from './store/store';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}> {/* ربط التطبيق بالـ store */}
+      <App />
+    </Provider>
   </React.StrictMode>
 );
 

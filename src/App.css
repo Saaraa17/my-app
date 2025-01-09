@@ -6,6 +6,15 @@ html, body {
     padding: 0; /* إزالة الحواف الافتراضية */
     overflow-x: hidden; /* منع التمرير الأفقي */
   }
+  html[dir="rtl"] {
+    direction: rtl;
+    text-align: right;
+  }
+  
+  html[dir="ltr"] {
+    direction: ltr;
+    text-align: left;
+  }
   
   /* التأكد من أن كل العناصر تستخدم box-sizing بطريقة صحيحة */
   *,

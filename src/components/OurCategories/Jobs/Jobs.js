@@ -1,55 +1,61 @@
 import React, { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import "./Jobs.css";
 import CategoriesNav from "../categoriesNav/categoriesNav";
-import { useProductModal } from '../../ProductModalManager/ProductModal'; 
+import { Link } from "react-router-dom";
 
 const Jobs = () => {
-  const [data, setData] = useState([]); 
-  const [loading, setLoading] = useState(true); 
+  const { t } = useTranslation();
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const { ProductModal, openModal } = useProductModal();
 
- 
   const fetchData = async () => {
     try {
-      const response = await fetch("https://api.example.com/Jobs"); 
+      const response = await fetch("https://api.example.com/Jobs");
       if (!response.ok) {
-        throw new Error("Failed to fetch data");
+        throw new Error(t("fetch_failed"));
       }
       const result = await response.json();
-      setData(result); 
+      setData(result);
     } catch (err) {
-      setError(err.message); 
+      setError(err.message);
     } finally {
-      setLoading(false); 
+      setLoading(false);
     }
   };
 
   useEffect(() => {
-    fetchData(); 
+    fetchData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <div className="Jobs">
-      <CategoriesNav/>
-      <h2 className="Jobs-title">Available Jobs</h2>
+      <CategoriesNav />
+      <h2 className="Jobs-title">{t("available_jobs")}</h2>
 
-      {loading && <p>Loading...</p>}
-      {error && <p style={{ color: "red" }}>{error}</p>} 
+      {loading && <p>{t("loading")}</p>}
+      {error && <p style={{ color: "red" }}>{t("error_message", { message: error })}</p>}
 
       <div className="Jobs-container">
-        {data.map((jobs) => (
-          <div key={jobs.id} className="Jobs-card">
-            <img src={jobs.image} alt={jobs.name} className="Jobs-image" onClick={() => openModal(jobs)}/>
+        {data.map((job) => (
+          <div key={job.id || job._id} className="Jobs-card">
+            <Link to={`/job/${job.id || job._id}`}>
+              <img
+                src={job.image || t("default_image")}
+                alt={job.name || t("no_name")}
+                className="Jobs-image"
+              />
+            </Link>
             <div className="Jobs-content">
-              <h3 className="Jobs-name">{jobs.name}</h3>
-              <p className="Jobs-description">{jobs.description}</p>
-              <p className="Jobs-price">Price: {jobs.price}</p>
+              <h3 className="Jobs-name">{job.name || t("no_name")}</h3>
+              <p className="Jobs-description">{job.description || t("no_description")}</p>
+              <p className="Jobs-price">{t("price", { price: job.price || t("no_price") })}</p>
             </div>
           </div>
         ))}
       </div>
-      <ProductModal />
     </div>
   );
 };

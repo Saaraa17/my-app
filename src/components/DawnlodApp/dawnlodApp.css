@@ -43,7 +43,7 @@
   margin-bottom: 10px;
 }
 
-/* روابط المتاجر */
+
 .download-buttons {
   display: flex;
   gap: 15px;
@@ -51,62 +51,62 @@
 }
 
 .download-icon {
-  width: 100px; /* حجم الأيقونات */
+  width: 100px; 
   height: auto;
   cursor: pointer;
-  transition: transform 0.3s ease; /* تأثير عند التمرير */
+  transition: transform 0.3s ease; 
   margin-top: 10px;
 }
 
 .download-icon:hover {
-  transform: scale(1.1); /* تكبير الأيقونات عند التمرير */
+  transform: scale(1.1); 
 }
 
-/* وسائل الاستجابة */
+
 @media (max-width: 768px) {
   .app-section {
-    flex-direction: row; /* ترتيب أفقي للعناصر */
-    align-items: center; /* محاذاة العناصر عموديًا */
-    justify-content: center; /* توسيط العناصر */
-    gap: 10px; /* مسافة صغيرة بين الصورة والنص */
-    padding: 10px; /* تقليل الحواف */
+    flex-direction: row; 
+    align-items: center;
+    justify-content: center; 
+    gap: 10px; 
+    padding: 10px; 
     margin-left: 5px;
   }
 
   .app-image {
-    margin-right: 10px; /* تقليل المسافة بين الصورة والنص */
-    flex: 0 0 150px; /* تصغير حجم الصورة */
+    margin-right: 10px; 
+    flex: 0 0 150px; 
   }
 
   .app-image img {
-    width: 150px; /* تصغير الصورة */
+    width: 150px; 
     height: auto;
     border-radius: 5px;
   }
 
   .app-content {
-    flex: 1; /* تمديد النص ليشغل المساحة المتاحة */
+    flex: 1; 
     text-align: left;
   }
 
   .app-content h2 {
-    font-size: 14px; /* تصغير العنوان */
+    font-size: 14px; 
     margin-bottom: 5px;
   }
 
   .app-content p {
-    font-size: 12px; /* تصغير النص */
+    font-size: 12px; 
     margin-bottom: 5px;
   }
 
   .download-buttons {
     display: flex;
-    gap: 5px; /* تقليل المسافة بين الأزرار */
+    gap: 5px; 
     justify-content: flex-start;
   }
 
   .download-icon {
-    width: 60px; /* تصغير حجم الأيقونات */
+    width: 60px; 
     height: auto;
     margin-top: 5px;
   }
@@ -115,50 +115,50 @@
 /* Media Query للأجهزة الأصغر من 480px */
 @media (max-width: 480px) {
   .app-section {
-    flex-direction: row; /* العناصر بجانب بعضها */
-    align-items: center; /* محاذاة عمودية في الوسط */
-    justify-content: center; /* توسيط العناصر أفقيًا */
-    gap: 5px; /* مسافة صغيرة جدًا بين العناصر */
-    padding: 5px; /* تقليل الحواف الداخلية */
+    flex-direction: row; 
+    align-items: center; 
+    justify-content: center; 
+    gap: 5px; 
+    padding: 5px; 
     margin-right: 3px;
     margin-top: 10px;
   }
 
   .app-image {
-    flex: 0 0 60px; /* الصورة تأخذ مساحة صغيرة جدًا */
-    margin-right: 3px; /* تقليل المسافة بين الصورة والنص */
+    flex: 0 0 60px; 
+    margin-right: 3px; 
   }
 
   .app-image img {
-    width: 80px; /* حجم الصورة النهائي */
+    width: 80px; 
     height: 90px;
-    border-radius: 3px; /* زوايا أقل دائرية */
+    border-radius: 3px; 
   }
 
   .app-content {
-    flex: 1; /* النص يشغل باقي المساحة */
-    text-align: left; /* محاذاة النص */
+    flex: 1; 
+    text-align: left;
   }
 
   .app-content h2 {
-    font-size: 10px; /* حجم صغير جدًا للعنوان */
+    font-size: 10px;
     margin-bottom: 3px;
   }
 
   .app-content p {
-    font-size: 8px; /* حجم صغير جدًا للنص */
+    font-size: 8px;
     margin-bottom: 3px;
-    line-height: 1.2; /* تقليل المسافة بين الأسطر */
+    line-height: 1.2; 
   }
 
   .download-buttons {
     display: flex;
-    gap: 3px; /* مسافة صغيرة بين الأزرار */
-    justify-content: flex-start; /* الأزرار بجانب بعضها */
+    gap: 3px; 
+    justify-content: flex-start; 
   }
 
   .download-icon {
-    width: 45px; /* حجم صغير جدًا للأيقونات */
+    width: 45px; 
     height: auto;
     margin-top: 11px;
   }

@@ -1,34 +1,35 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next'; 
 import iphonphoto from "../assets/iPhone 15.png";
 import googlePlayIcon from "../assets/google-play-icon.png";
 import appStoreIcon from "../assets/app-store-icon.png";
 import './dawnlodApp.css';
 
+
+
 const App = () => {
+  const { t } = useTranslation(); 
+  
   return (
     <div className="app-section">
       <div className="app-image">
         <img src={iphonphoto} alt="App" />
       </div>
       <div className="app-content">
-        <h2>Shop Anywhere, Anytime! Download Our Mobile App Today</h2>
-        <p>Discover a seamless shopping experience on the go with our mobile app. Get exclusive deals, faster checkout, and more.</p>
-        <p>
-        Download now and enjoy:
-        <ui>
+        <h2>{t('app_heading')}</h2> {/* ترجمة العنوان */}
+        <p>{t('app_description')}</p> {/* ترجمة الوصف */}
+        <p>{t('download_now')}</p> {/* ترجمة "Download now and enjoy" */}
+        <ul>
           <li>
-          Instant Notifications: Be the first to know about our latest offers and promotions.
+            <p>{t('instant_notifications')}</p> {/* ترجمة "Instant Notifications" */}
           </li>
           <li>
-          Easy Browsing: Explore our products effortlessly with a user-friendly interface.
+            <p>{t('easy_browsing')}</p> {/* ترجمة "Easy Browsing" */}
           </li>
-        </ui>
-        </p>
-
-
+        </ul>
 
         <div className="download-buttons">
-          <h2>Dawnlod Now:</h2>
+          <h2>{t('download_now_button')}</h2> {/* ترجمة "Download Now:" */}
           <a href="https://play.google.com/store" target="_blank" rel="noopener noreferrer">
             <img src={googlePlayIcon} alt="Google Play" className="download-icon" />
           </a>
@@ -36,8 +37,7 @@ const App = () => {
             <img src={appStoreIcon} alt="App Store" className="download-icon" />
           </a>
         </div>
-
-        </div>
+      </div>
     </div>
   );
 };

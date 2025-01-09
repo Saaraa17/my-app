@@ -25,8 +25,9 @@
 }
 
 .product-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
   gap: 15px;
   margin-top: 20px;
 }
@@ -38,7 +39,10 @@
   overflow: hidden;
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  margin-top: 30px;
+  flex: 1 1 calc(33.33% - 15px); /* تأكد من أن العناصر تتوزع بالتساوي */
+  max-width: 350px; /* تحديد الحد الأقصى للعرض */
+  min-width: 250px; /* الحد الأدنى للعرض */
+  height: 350px; /* تحديد الارتفاع ليكون ثابتًا */
 }
 
 .product-card:hover {
@@ -54,6 +58,10 @@
 
 .product-details {
   padding: 10px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .product-details h3 {
@@ -65,7 +73,9 @@
 .product-details p {
   font-size: 12px;
   color: #7A7A7A;
+  margin: 0;
 }
+
 /* لشاشات صغيرة (أقل من 768px) */
 @media (max-width: 768px) {
   .recommended-products {
@@ -84,13 +94,12 @@
   }
 
   .product-grid {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 10px;
+    justify-content: center; /* تركز العناصر في حالة وجود عدد قليل */
   }
 
   .product-card {
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin-top: 15px;
+    flex: 1 1 calc(50% - 10px); /* عدد الأعمدة يصبح 2 */
+    height: 300px;
   }
 
   .product-image {
@@ -124,13 +133,12 @@
   }
 
   .product-grid {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 8px;
+    justify-content: center; /* تركز العناصر */
   }
 
   .product-card {
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    margin-top: 15px;
+    flex: 1 1 calc(100% - 8px); /* يصبح العنصر الواحد 100% من العرض */
+    height: 250px;
   }
 
   .product-image {

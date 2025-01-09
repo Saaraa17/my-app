@@ -1,55 +1,65 @@
 import React, { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import "./Other.css";
 import CategoriesNav from "../categoriesNav/categoriesNav";
-import { useProductModal } from '../../ProductModalManager/ProductModal'; 
+import { Link } from "react-router-dom";
 
 const Other = () => {
-  const [data, setData] = useState([]); 
-  const [loading, setLoading] = useState(true); 
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const { ProductModal, openModal } = useProductModal();
+  const { t } = useTranslation();
 
- 
   const fetchData = async () => {
     try {
-      const response = await fetch("https://api.example.com/Other"); 
+      const response = await fetch("https://api.example.com/Other");
       if (!response.ok) {
-        throw new Error("Failed to fetch data");
+        throw new Error(t("fetch_failed"));
       }
       const result = await response.json();
-      setData(result); 
+      setData(result);
     } catch (err) {
-      setError(err.message); 
+      setError(err.message);
     } finally {
-      setLoading(false); 
+      setLoading(false);
     }
   };
 
   useEffect(() => {
-    fetchData(); 
+    fetchData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <div className="Other">
-      <CategoriesNav/>
-      <h2 className="Other-title">Available Other</h2>
+      <CategoriesNav />
+      <h2 className="Other-title">{t("available_other")}</h2>
 
-      {loading && <p>Loading...</p>}
-      {error && <p style={{ color: "red" }}>{error}</p>} 
+      {loading && <p>{t("loading")}</p>}
+      {error && <p style={{ color: "red" }}>{t("error_message", { message: error })}</p>}
 
       <div className="Other-container">
         {data.map((other) => (
-          <div key={other.id} className="Other-card">
-            <img src={other.image} alt={other.name} className="Other-image" onClick={() => openModal(other)} />
+          <div key={other.id || other._id} className="Other-card">
+            <Link to={`/other/${other.id || other._id}`}>
+              <img
+                src={
+                  Array.isArray(other.images) && other.images.length > 0
+                    ? other.images[0]
+                    : t("default_image")
+                }
+                alt={other.name || t("no_name")}
+                className="Other-image"
+              />
+            </Link>
             <div className="Other-content">
-              <h3 className="Other-name">{other.name}</h3>
-              <p className="Other-description">{other.description}</p>
-              <p className="Other-price">Price: {other.price}</p>
+              <h3 className="Other-name">{other.name || t("no_name")}</h3>
+              <p className="Other-description">{other.description || t("no_description")}</p>
+              <p className="Other-price">{t("price", { price: other.price || t("no_price") })}</p>
             </div>
           </div>
         ))}
       </div>
-      <ProductModal />
     </div>
   );
 };

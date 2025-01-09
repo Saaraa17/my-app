@@ -1,45 +1,41 @@
-import React, { useState } from 'react';
-import './productModal.css';
-
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 export const useProductModal = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const { t } = useTranslation();
   const [product, setProduct] = useState(null);
 
   const openModal = (productDetails) => {
-    setProduct(productDetails); // تخزين بيانات المنتج
-    setIsOpen(true); // فتح الـModal
+    setProduct(productDetails);
   };
 
-  const closeModal = () => {
-    setIsOpen(false); // غلق الـModal
-    setProduct(null); // تفريغ البيانات
-  };
-
-  const ProductModal = () => (
-    isOpen && (
+  const ProductModal = () =>
+    product ? (
       <div className="modal-overlay">
         <div className="modal-container">
-          <button className="close-button" onClick={closeModal}>
-            &times;
-          </button>
-          {product ? (
-            <div className="modal-content">
-              <img src={product.images} alt={product.title} className="modal-image" />
-              <div className="modal-details">
-                <h2>{product.title}</h2>
-                <p>Description:{product.description}</p>
-                <p className="modal-price">Price: {product.price}</p>
-                <p className="modal-location">Location: {product.location}</p>
-              </div>
+          <Link to={`/product/${product.id}`} className="close-button">
+            {t("go_to_product_page")}
+          </Link>
+          <div className="modal-content">
+            <div className="image-carousel">
+              <img
+                src={product.images[0] || t("default_image")}
+                alt={product.title || t("no_title")}
+                className="modal-image"
+              />
             </div>
-          ) : (
-            <p>Loading...</p>
-          )}
+            <div className="modal-details">
+  <h3 className="product-name">{product.title || t("no_title")}</h3>
+  <p className="product-description">{product.description || t("no_description")}</p>
+  <p className="product-price">{t("price")}: {product.price || t("no_price")}</p>
+  <p className="product-category">{t("category")}: {product.category || t("no_category")}</p>
+</div>
+
+          </div>
         </div>
       </div>
-    )
-  );
+    ) : null;
 
-  return { ProductModal, openModal, closeModal };
+  return { ProductModal, openModal };
 };

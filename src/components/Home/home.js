@@ -1,7 +1,6 @@
 import './home.css';
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import HeroSection from './HeroSection/heroSection';
 import CategoriesSection from './CategoriesSection/categoriesSection';
 import RecommendedSection from './RecommendedSection/recommendedSection';
@@ -10,22 +9,31 @@ import AnimalsSection from './AnimalsSection/AnimalsSection';
 import Ads from '../Home/Ads/Ads';
 
 const App = () => {
-  const [products, setProducts] = useState([]);
-  const [error, setError] = useState(null); // تخزين الأخطاء
+  const products = [
+    {
+      _id: '1',
+      name: 'Product 1',
+      description: 'Description for product 1',
+      price: 100,
+      image: 'path/to/image1.jpg',
+    },
+    {
+      _id: '2',
+      name: 'Product 2',
+      description: 'Description for product 2',
+      price: 150,
+      image: 'path/to/image2.jpg',
+    },
+    {
+      _id: '3',
+      name: 'Product 3',
+      description: 'Description for product 3',
+      price: 200,
+      image: 'path/to/image3.jpg',
+    },
+  ];
+  
   const navigate = useNavigate();
-
-  useEffect(() => {
-    axios.get('http://rnkoo-154-128-123-67.a.free.pinggy.link/items')
-      .then(response => {
-        console.log("API Response:", response.data); // تحقق من البيانات هنا
-        setProducts(response.data);
-        setError(null); // إعادة تعيين الأخطاء
-      })
-      .catch(error => {
-        console.error("Error fetching products:", error.response || error.message || error);
-        setError("Failed to load products.");
-      });
-  }, []);
 
   const handleProductClick = (productId) => {
     const selectedProduct = products.find((p) => p._id === productId);
@@ -38,7 +46,6 @@ const App = () => {
       <CategoriesSection />
       <RecommendedSection 
         products={products} 
-        error={error} 
         handleProductClick={handleProductClick} 
       />
       <FurnitureSection 
